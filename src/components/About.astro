@@ -1,0 +1,89 @@
+---
+export interface Props {
+  name: string;
+  profilePicture: string;
+  bio: string;
+  profession: string;
+}
+
+const { name, profilePicture, bio, profession } = Astro.props;
+---
+<section class="hero container">
+  <div class="profile">
+    <div class="left" id="avatar">
+    </div>
+    <div class="right">
+      <p class="name">{name}</p>
+      <p class="profession">{profession}</p>
+    </div>
+    <div class="right">
+    </div>
+  </div>
+  <div class="bio">
+    {bio}
+  </div>
+</section>
+
+<script>
+  import ModelViewer from "@metamask/logo";
+  import meshJson from '../avatarMesh.json';
+
+  // To render with fixed dimensions:
+  const viewer = ModelViewer({
+    // Dictates whether width & height are px or multiplied
+    pxNotRatio: true,
+    width: 60,
+    height: 60,
+    // pxNotRatio: false,
+    // width: 0.9,
+    // height: 0.9,
+
+    // To make the face follow the mouse.
+    followMouse: false,
+    meshJson,
+
+    // head should slowly drift (overrides lookAt)
+    slowDrift: false,
+  });
+
+  // add viewer to DOM
+  const container = document.getElementById('avatar');
+  container.appendChild(viewer.container);
+
+  // enable mouse follow
+  viewer.setFollowMouse(true);
+
+  // deallocate nicely
+  //viewer.stopAnimation();
+</script>
+
+<style>
+  .hero {
+    margin-top: 5em;
+  }
+
+  .left {
+    margin-right: 1em;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+
+  .name {
+    color: var(--text-color-1);
+    font-weight: 500;
+  }
+
+  .profession {
+    color: var(--text-color-2);
+    font-weight: 500;
+  }
+
+  .bio {
+    color: var(--text-color-1);
+    margin-top: 2em;
+  }
+
+</style>

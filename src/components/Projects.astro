@@ -1,0 +1,63 @@
+---
+import Card from './Card.astro';
+import Arrow from './Arrow.astro';
+
+const { projects } = Astro.props;
+---
+
+<div class="container">
+  <div class="gradient">
+    <div class="projects">
+      <div class="box">
+        {projects.map(project => (
+        <Card
+          title={project['Title']}
+          description={project['Description']}
+          source={project['Source']}
+          live={project['Live']}
+        />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <a href="https://github.com/siddharthroy12" class="view-all">View All <Arrow /></a>
+</div>
+
+<style>
+  .projects {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    margin-top: 2em;
+    padding-bottom: 1em;
+  }
+
+  .gradient {
+    position: relative;
+  }
+
+  .gradient::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(270deg, #161616 0%, rgba(22, 22, 22, 0) 15.6%);
+    pointer-events: none;
+  }
+
+  .box {
+    display: flex;
+    min-height: min-content; /* needs vendor prefixes */
+  }
+
+  .view-all {
+    color: var(--text-color-1);
+    text-decoration: none;
+    display: block;
+    margin-top: 2em;
+  }
+</style>
+
