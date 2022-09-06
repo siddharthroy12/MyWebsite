@@ -35,26 +35,45 @@ const { title } = Astro.props;
     font-family: 'Inter', sans-serif;
   }
 
-  ::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: 7px;
+    scrollbar-color: var(--text-color-2) rgba(0, 0, 0, 0);
   }
 
-  ::-webkit-scrollbar-track {
-    background: var(--text-color-3);
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 7px;
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: var(--text-color-2);
-    border-radius: 50px;
+  *::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--text-color-2);
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0);
+  }
+
+  /* Text selection color */
+  ::-moz-selection {
+    background: var(--text-selection-color);
+  }
+
+  ::selection {
+    background: var(--text-selection-color);
   }
 
   :root {
-    font-size: 18px;
+    font-size: 16px;
     --background-color: #161616;
     --text-color-1: #EDEDED;
     --text-color-2: #8E8E8E;
     --text-color-3: #555555;
+    --text-hover-background: #323232;
+    --text-selection-color: #2e2e2e;
 
     --card-border-color: #565656;
     --card-border-color-hover: #E431C8;

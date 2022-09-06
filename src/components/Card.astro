@@ -1,4 +1,7 @@
 ---
+import ThunderIcon from './ThunderIcon.astro';
+import CodeIcon from './CodeIcon.astro';
+
 export interface Props {
   title: string;
   about: string;
@@ -13,19 +16,27 @@ const { title, description, live, source } = Astro.props;
   <p class="title">{title}</p>
   <p class="description">{description}</p>
   <div class="links">
-    <a href={live} target="_black" rel="noreferrer">Live</a>
-    <a href={source} target="_black" rel="noreferrer">Source</a>
+    <a href={live} target="_black" rel="noreferrer">
+      <span>Live</span>
+      <ThunderIcon />
+    </a>
+    <a href={source} target="_black" rel="noreferrer">
+      <span>Source</span>
+      <CodeIcon />
+    </a>
   </div>
-<div>
+  <div>
 
 <style>
   .card {
     border: 2px solid var(--card-border-color);
     border-radius: 3px;
-    padding: 20px;
+    padding: 1em;
+    padding-bottom: 3.5em;
     width: 18em;
     transition-duration: .2s;
     margin-right: 1em;
+    position: relative;
   }
 
   .card:hover {
@@ -36,6 +47,7 @@ const { title, description, live, source } = Astro.props;
   .title {
     color: var(--text-color-1);
     font-size: 1.2rem;
+    font-weight: 500;
   }
 
   .description {
@@ -44,12 +56,27 @@ const { title, description, live, source } = Astro.props;
   }
 
   .links {
-    margin-top: 1em;
+    position: absolute;
+    bottom: 1em;
   }
 
   .links a {
     margin-right: 1em;
     color: var(--text-color-1);
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem;
+    padding: 0.4em;
+    border-radius: 3px;
+    transition-duration: 0.2s;
+  }
+
+  .links a:hover {
+    background: var(--text-hover-background);
+  }
+
+  .links a span {
+    margin-right: 0.3em;
   }
 </style>
