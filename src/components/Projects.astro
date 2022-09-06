@@ -26,9 +26,13 @@ const { projects } = Astro.props;
   // Add appropiate padding
   function addPaddingToBox() {
     const box = document.getElementById("box");
-    const padding = `${((window.innerWidth - (750+(16))) / 2)}px`;
-    box.style.paddingLeft = padding;
-    box.style.paddingRight = padding;
+    let padding = ((window.innerWidth - (750+(16))) / 2);
+
+    if (window.innerWidth < 750) {
+      padding = 16;
+    }
+    box.style.paddingLeft = padding+'px';
+    box.style.paddingRight = padding+'px';
   }
 
   addPaddingToBox();
