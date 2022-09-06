@@ -1,0 +1,25 @@
+---
+const { link } = Astro.props;
+---
+
+<a href={link} class="view-all"><span><slot/></span>→</a>
+
+<style>
+  .view-all {
+    color: var(--text-color-3);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1em;
+    fill: var(--text-color-3);
+  }
+
+  .view-all:hover {
+    color: var(--text-color-1);
+    fill: var(--text-color1);
+  }
+
+  .view-all span {
+    margin-right: 0.2em;
+    font-size: 0.9rem;
+  }
+</style>

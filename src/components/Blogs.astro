@@ -1,0 +1,45 @@
+---
+import OpenLink from './OpenLink.astro';
+
+const { blogs } = Astro.props;
+---
+
+<section class="container">
+  <h2>FEATURED BLOGS</h2>
+
+  <div class="blogs">
+    {blogs.map(blog => (
+    <div class="blog">
+      <a href={blog['Link'].url} target="_black" rel="noreferrer">{blog['Title']}</a>
+      <p class="date">{blog['Date']}</p>
+    </div>
+    ))}
+  </div>
+
+  <OpenLink link="https://www.instagram.com/reactoverflow">View more</OpenLink>
+</section>
+
+<style>
+  h2 {
+    color: var(--text-color-2);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    margin: 2em 0;
+  }
+
+  .blog {
+    margin-bottom: 2em;
+  }
+
+  .blog a {
+    color: var(--text-color-1);
+    margin-bottom: 0.2em;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .blog .date {
+    color: var(--text-color-2);
+  }
+
+</style>
