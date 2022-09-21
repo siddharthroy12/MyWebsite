@@ -8,20 +8,36 @@ import Contact from '../components/Contact.astro';
 // Fetch Data from CDN
 const response = await fetch('https://api.storyblok.com/v2/cdn/stories/home?token='+import.meta.env.STORYBLOK_TOKEN);
 const data = await response.json();
-console.log(data);
 const name = data.story.content['Name'];
 const profilePicture = data.story.content['Picture'];
 const bio = data.story.content['Bio'];
 const profession = data.story.content['Profession'];
-
 ---
 
 <Layout title="Siddharth Roy | Developer">
-  <About name={name} profilePicture={profilePicture} profession={profession} bio={bio}/>
-  <Projects projects={data.story.content['Projects']}/>
-  <Blogs blogs={data.story.content['Blogs']}/>
-  <Contact />
+  <div class="fadeIn" style="animation-delay: 0s">
+    <About name={name} profilePicture={profilePicture} profession={profession} bio={bio}/>
+  </div>
+  <div class="fadeIn" style="animation-delay: 0.5s">
+    <Projects projects={data.story.content['Projects']}/>
+  </div>
+  <div class="fadeIn" style="animation-delay: 1s">
+    <Blogs blogs={data.story.content['Blogs']}/>
+  </div>
+  <div class="fadeIn" style="animation-delay: 1.5s">
+    <Contact />
+  </div>
 </Layout>
 
 <style>
+  .fadeIn {
+    opacity: 0;
+    animation: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20%) }
+    100% { opacity: 1; transform: translateY(0%) }
+  }
 </style>

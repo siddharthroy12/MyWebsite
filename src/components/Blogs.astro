@@ -36,6 +36,11 @@ const { blogs } = Astro.props;
     margin-bottom: 0.2em;
     display: inline-block;
     text-decoration: none;
+    transition-duration: 0.3s;
+  }
+
+  .blog a:hover {
+    color: var(--card-border-color-hover);
   }
 
   .blog .date {

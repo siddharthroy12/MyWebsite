@@ -34,7 +34,7 @@ const { title, description, live, source } = Astro.props;
     padding: 1em;
     padding-bottom: 3.5em;
     width: 18em;
-    transition-duration: .2s;
+    transition-duration: .3s;
     margin-right: 1em;
     position: relative;
   }
@@ -42,6 +42,7 @@ const { title, description, live, source } = Astro.props;
   .card:hover {
     border-color: var(--card-border-color-hover);
     background: var(--card-background-hover);
+    transform: scale(110%);
   }
 
   .title {
