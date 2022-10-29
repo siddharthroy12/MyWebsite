@@ -25,7 +25,7 @@ const { title, description, live, source } = Astro.props;
       <CodeIcon />
     </a>
   </div>
-  <div>
+<div>
 
 <style>
   .card {
@@ -39,10 +39,46 @@ const { title, description, live, source } = Astro.props;
     position: relative;
   }
 
+  .card:first-child::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -100px;
+    border: 2px solid #373737;
+    animation-name: swipe-hint;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes swipe-hint {
+    0% {
+      transform: translateX(0) scale(100%);
+    }
+
+    30% {
+      transform: scale(70%);
+    }
+
+    70% {
+      transform: translateX(-50px) scale(70%);
+    }
+
+    80% {
+      transform: translateX(-50px) scale(100%);
+    }
+
+    100% {
+      transform: translateX(0) scale(100%);
+    }
+  }
+
   .card:hover {
     border-color: var(--card-border-color-hover);
     background: var(--card-background-hover);
-    transform: scale(110%);
   }
 
   .title {
