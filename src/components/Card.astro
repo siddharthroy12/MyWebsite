@@ -56,23 +56,23 @@ const { title, description, live, source } = Astro.props;
 
   @keyframes swipe-hint {
     0% {
-      transform: translateX(0) scale(100%);
+      transform: translateX(0) scale(100%) translateY(-50%);
     }
 
     30% {
-      transform: scale(70%);
+      transform: scale(70%) translateY(-50%);
     }
 
     70% {
-      transform: translateX(-50px) scale(70%);
+      transform: translateX(-50px) scale(70%) translateY(-50%);
     }
 
     80% {
-      transform: translateX(-50px) scale(100%);
+      transform: translateX(-50px) scale(100%) translateY(-50%);
     }
 
     100% {
-      transform: translateX(0) scale(100%);
+      transform: translateX(0) scale(100%) translateY(-50%);
     }
   }
 
