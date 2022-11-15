@@ -37,10 +37,24 @@ const { blogs } = Astro.props;
     display: inline-block;
     text-decoration: none;
     transition-duration: 0.3s;
+    position: relative;
   }
 
-  .blog a:hover {
-    color: var(--card-border-color-hover);
+  .blog a::after {
+    content: '';
+    border: 1px solid white;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    position: absolute;
+    transition-duration: 0.3s;
+    opacity: 0;
+  }
+
+  .blog:hover a::after {
+    width: 100%;
+    opacity: 100%;
   }
 
   .blog .date {
