@@ -16,20 +16,20 @@ const { title, description, live, source } = Astro.props;
   <p class="title">{title}</p>
   <p class="description">{description}</p>
   <div class="links">
-    <a href={live} target="_black" rel="noreferrer">
+    <a href={live} target="_blank" rel="noreferrer">
       <span>Live</span>
       <ThunderIcon />
     </a>
-    <a href={source} target="_black" rel="noreferrer">
+    <a href={source} target="_blank" rel="noreferrer">
       <span>Source</span>
       <CodeIcon />
     </a>
   </div>
-<div>
+</div>
 
 <style>
   .card {
-    border: 2px solid var(--card-border-color);
+    border: 1px solid var(--card-border-color);
     border-radius: 3px;
     padding: 1em;
     padding-bottom: 3.5em;
@@ -37,6 +37,7 @@ const { title, description, live, source } = Astro.props;
     transition-duration: .3s;
     margin-right: 1em;
     position: relative;
+    background: #0e0e0e;
   }
 
   .card:first-child::before {
