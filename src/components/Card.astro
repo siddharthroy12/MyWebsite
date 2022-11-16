@@ -4,7 +4,7 @@ import CodeIcon from './CodeIcon.astro';
 
 export interface Props {
   title: string;
-  about: string;
+  description: string;
   live: string;
   source: string;
 }
@@ -79,7 +79,7 @@ const { title, description, live, source } = Astro.props;
 
   .card:hover {
     border-color: var(--card-border-color-hover);
-    background: var(--card-background-hover);
+    /* background: #0c0c0c; */
   }
 
   .title {
@@ -108,10 +108,12 @@ const { title, description, live, source } = Astro.props;
     padding: 0.4em;
     border-radius: 3px;
     transition-duration: 0.2s;
+    border: 1px solid #0e0e0e;
   }
 
   .links a:hover {
-    background: var(--text-hover-background);
+    background: #1a1a1a;
+    border: 1px solid #242424;
   }
 
   .links a span {
