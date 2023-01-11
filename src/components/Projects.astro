@@ -1,51 +1,90 @@
 ---
-import Card from './Card.astro';
-import OpenLink from './OpenLink.astro';
+import Card from "./Card.astro";
+import OpenLink from "./OpenLink.astro";
 
-const { projects } = Astro.props;
+const projects = [
+  {
+    title: "TouchTyper",
+    description:
+      "A minimalistic typing test software inspired by monkeytype built using C++ for both desktop and browser.",
+    live: "https://touchtyper.netlify.app/",
+    source: "https://github.com/siddharthroy12/TouchTyper",
+  },
+  {
+    title: "Agurs",
+    description:
+      "A full stack MVP Reddit clone made using React, TypeScript, NodeJS, Express, and MongoDB.",
+    live: "https://agrus.onrender.com/",
+    source: "https://github.com/siddharthroy12/Agrus",
+  },
+  {
+    title: "Rockets",
+    description:
+      "A retro-style pixel art game made for a fantasy console PICO-8 using the LUA programming language.",
+    live: "https://siddharthroy12.itch.io/rockets",
+    source: "https://www.lexaloffle.com/bbs/?tid=47633",
+  },
+  {
+    title: "Gravity Sandbox",
+    description:
+      "A fun toy/game where you can play with Newtonian Gravity. Place heavy objects in patterns and see interesting results.",
+    live: "https://gravity-sandbox.netlify.app/",
+    source: "https://github.com/siddharthroy12/Gravity-Sandbox",
+  },
+  {
+    title: "Recoded",
+    description:
+      "A web app/tool to create beautiful images and videos of your code directly in your browser with just one click.",
+    live: "https://recoded.netlify.app/",
+    source: "https://github.com/siddharthroy12/recoded",
+  },
+];
 ---
+
 <section>
-<div class="projects" id="scrollable">
-  <div class="box" id="box">
-    {projects.map(project => (
-    <Card
-      title={project['Title']}
-      description={project['Description']}
-      source={project['Source']}
-      live={project['Live']}
-    />
-    ))}
+  <div class="projects" id="scrollable">
+    <div class="box" id="box">
+      {
+        projects.map((project) => (
+          <Card
+            title={project["title"]}
+            description={project["description"]}
+            source={project["source"]}
+            live={project["live"]}
+          />
+        ))
+      }
+    </div>
   </div>
-</div>
-<div class="container">
-  <OpenLink link="https://github.com/siddharthroy12">View all</OpenLink>
-</div>
+  <div class="container">
+    <OpenLink link="https://github.com/siddharthroy12">View all</OpenLink>
+  </div>
 </section>
 
 <script>
   // Add appropiate padding
   function addPaddingToBox() {
     const box = document.getElementById("box");
-    let padding = ((window.innerWidth - (750+(16))) / 2);
+    let padding = (window.innerWidth - (750 + 16)) / 2;
 
     if (window.innerWidth < 750) {
       padding = 16;
     }
-    box.style.paddingLeft = padding+'px';
-    box.style.paddingRight = padding+'px';
+    box.style.paddingLeft = padding + "px";
+    box.style.paddingRight = padding + "px";
   }
 
   addPaddingToBox();
 
-  window.addEventListener('resize', addPaddingToBox);
+  window.addEventListener("resize", addPaddingToBox);
 
   // Dragable scroll
-  const ele = document.getElementById('scrollable');
+  const ele = document.getElementById("scrollable");
   let pos = { top: 0, left: 0, x: 0, y: 0 };
 
   const mouseMoveHandler = function (e) {
-    ele.style.cursor = 'grabbing';
-    ele.style.userSelect = 'none';
+    ele.style.cursor = "grabbing";
+    ele.style.userSelect = "none";
     // How far the mouse has been moved
     const dx = e.clientX - pos.x;
     const dy = e.clientY - pos.y;
@@ -56,11 +95,12 @@ const { projects } = Astro.props;
   };
 
   const mouseUpHandler = function () {
-    document.removeEventListener('mousemove', mouseMoveHandler);
-    document.removeEventListener('mouseup', mouseUpHandler);
+    document.removeEventListener("mousemove", mouseMoveHandler);
+    document.removeEventListener("mouseup", mouseUpHandler);
 
-    ele.style.cursor = 'grab';
-    ele.style.removeProperty('user-select');
+    ele.style.cursor = "grab";
+    ele.style.removeProperty("user-select");
+    ele.classList.add("no-hint");
   };
 
   const mouseDownHandler = function (e) {
@@ -73,12 +113,11 @@ const { projects } = Astro.props;
       y: e.clientY,
     };
 
-    document.addEventListener('mousemove', mouseMoveHandler);
-    document.addEventListener('mouseup', mouseUpHandler);
+    document.addEventListener("mousemove", mouseMoveHandler);
+    document.addEventListener("mouseup", mouseUpHandler);
   };
 
-  ele.addEventListener('mousedown', mouseDownHandler);
-
+  ele.addEventListener("mousedown", mouseDownHandler);
 </script>
 
 <style>
@@ -90,8 +129,8 @@ const { projects } = Astro.props;
     padding-bottom: 1em;
     padding-top: 1em;
     cursor: grab;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .projects::-webkit-scrollbar {
@@ -103,7 +142,7 @@ const { projects } = Astro.props;
   }
 
   .gradient::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -118,4 +157,3 @@ const { projects } = Astro.props;
     min-height: min-content;
   }
 </style>
-

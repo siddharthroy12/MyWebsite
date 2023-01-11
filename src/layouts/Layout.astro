@@ -1,5 +1,5 @@
 ---
-import Header from '../components/Header.astro';
+import Header from "../components/Header.astro";
 export interface Props {
   title: string;
 }
@@ -18,81 +18,81 @@ const { title } = Astro.props;
   <body>
     <Header />
     <slot />
+    <style is:global>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap");
+
+      *,
+      *::before,
+      *::after,
+      body,
+      html {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Manrope", sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ===== Scrollbar CSS ===== */
+      /* Firefox */
+      * {
+        scrollbar-width: 7px;
+        scrollbar-color: var(--text-color-2) rgba(0, 0, 0, 0);
+      }
+
+      /* Chrome, Edge, and Safari */
+      *::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      *::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0);
+      }
+
+      *::-webkit-scrollbar-thumb {
+        background-color: var(--text-color-2);
+        border-radius: 10px;
+        border: 3px solid rgba(0, 0, 0, 0);
+      }
+
+      /* Text selection color */
+      ::-moz-selection {
+        background: var(--text-selection-color);
+      }
+
+      ::selection {
+        background: var(--text-selection-color);
+      }
+
+      :root {
+        font-size: 16px;
+        --background-color: #080808;
+        --text-color-1: #ededed;
+        --text-color-2: #8e8e8e;
+        --text-color-3: #8b8b8b;
+        --text-hover-background: #323232;
+        --text-selection-color: #2e2e2e;
+
+        --card-border-color: #1c1c1c;
+        --card-border-color-hover: #6e6e6e;
+        --card-background-hover: #141414;
+      }
+
+      body {
+        background: var(--background-color);
+      }
+
+      .container {
+        max-width: 750px;
+        margin: auto;
+      }
+
+      @media screen and (max-width: 750px) {
+        .container {
+          padding: 16px;
+        }
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
-
-  *,
-  *::before,
-  *::after,
-  body,
-  html {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: 7px;
-    scrollbar-color: var(--text-color-2) rgba(0, 0, 0, 0);
-  }
-
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 7px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: var(--text-color-2);
-    border-radius: 10px;
-    border: 3px solid rgba(0, 0, 0, 0);
-  }
-
-  /* Text selection color */
-  ::-moz-selection {
-    background: var(--text-selection-color);
-  }
-
-  ::selection {
-    background: var(--text-selection-color);
-  }
-
-  :root {
-    font-size: 16px;
-    --background-color: #080808;
-    --text-color-1: #EDEDED;
-    --text-color-2: #8E8E8E;
-    --text-color-3: #8b8b8b;
-    --text-hover-background: #323232;
-    --text-selection-color: #2e2e2e;
-
-    --card-border-color: #1c1c1c;
-    --card-border-color-hover: #6e6e6e;
-    --card-background-hover: #141414; 
-  }
-
-  body {
-    background: var(--background-color);
-  }
-
-  .container {
-    max-width: 750px;
-    margin: auto;
-  }
-
-  @media screen and (max-width: 750px) {
-    .container {
-      padding: 16px;
-    }
-  }
-</style>

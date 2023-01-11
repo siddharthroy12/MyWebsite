@@ -1,27 +1,71 @@
 ---
-export interface Props {
-  name: string;
-  profilePicture: string;
-  bio: string;
-  profession: string;
-}
+function calculateAge(dob) {
+  var diff_ms = Date.now() - dob.getTime();
+  var age_dt = new Date(diff_ms);
 
-const { name, profilePicture, bio, profession } = Astro.props;
+  return Math.abs(age_dt.getUTCFullYear() - 1970);
+}
 ---
+
 <section class="hero container">
   <div class="profile">
-    <h1 class="intro">Hi, I'm <span>{name}</span>,<br>I {profession}</h1>
+    <h1 class="intro">
+      I'm <span class="white">Siddharth Roy</span>, a designer, developer and
+      blogger.
+      <br />
+      <br />
+      <div style={{ maxWidth: "510px" }}>
+        A {calculateAge(new Date(2003, 11, 30))}yo software engineer bridging
+        between programming and design, creator of <a
+          href="https://recoded.netlify.app/"
+          target="_blank"
+          rel="noreferrer">Recoded</a
+        > & <a
+          href="https://www.instagram.com/reactoverflow/"
+          target="_blank"
+          rel="noreferrer">ReactOverflow</a
+        >
+        and into open-source.
+      </div>
+    </h1>
   </div>
 </section>
 
 <style>
   .intro {
-    color: rgb(229, 229, 229);
-    font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 36px;
-    margin-top: 50px;
-    max-width: 400px;
+    margin-top: 100px;
+    font-size: 16px;
+    font-weight: 600 !important;
+    color: #9b9c9c;
+    line-height: 28px;
+  }
+
+  .white {
+    color: #ffffff;
+  }
+
+  a {
+    color: #ff647f;
+    display: inline-block;
+    text-decoration: none;
+    transition-duration: 0.3s;
+    position: relative;
+  }
+
+  a::after {
+    content: "";
+    border: 1px solid #ff647f;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    position: absolute;
+    transition-duration: 0.3s;
+    opacity: 0;
+  }
+
+  a:hover::after {
+    width: 100%;
+    opacity: 100%;
   }
 </style>

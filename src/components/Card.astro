@@ -1,6 +1,6 @@
 ---
-import ThunderIcon from './ThunderIcon.astro';
-import CodeIcon from './CodeIcon.astro';
+import ThunderIcon from "./ThunderIcon.astro";
+import CodeIcon from "./CodeIcon.astro";
 
 export interface Props {
   title: string;
@@ -34,20 +34,19 @@ const { title, description, live, source } = Astro.props;
     padding: 1em;
     padding-bottom: 3.5em;
     width: 18em;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     margin-right: 1em;
     position: relative;
     background: #0e0e0e;
   }
 
   .card:first-child::before {
-    content: '';
+    content: "";
     width: 30px;
     height: 30px;
     position: absolute;
     border-radius: 50px;
     top: 45%;
-    transform: ;
     left: -100px;
     border: 2px solid #373737;
     animation-name: swipe-hint;
@@ -55,25 +54,29 @@ const { title, description, live, source } = Astro.props;
     animation-iteration-count: infinite;
   }
 
+  :global(.no-hint) .card:first-child::before {
+    display: none;
+  }
+
   @keyframes swipe-hint {
     0% {
-      transform: translateX(0) scale(100%) ;
+      transform: translateX(0) scale(100%);
     }
 
     30% {
-      transform: scale(70%) ;
+      transform: scale(70%);
     }
 
     70% {
-      transform: translateX(-50px) scale(70%) ;
+      transform: translateX(-50px) scale(70%);
     }
 
     80% {
-      transform: translateX(-50px) scale(100%) ;
+      transform: translateX(-50px) scale(100%);
     }
 
     100% {
-      transform: translateX(0) scale(100%) ;
+      transform: translateX(0) scale(100%);
     }
   }
 

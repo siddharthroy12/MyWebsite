@@ -1,19 +1,44 @@
 ---
-import OpenLink from './OpenLink.astro';
+import OpenLink from "./OpenLink.astro";
 
-const { blogs } = Astro.props;
+const blogs = [
+  {
+    title: "How to get good at LeetCode",
+    link: "https://www.instagram.com/p/Cf6rtHOrLyY/",
+    date: "July 12, 2020",
+  },
+  {
+    title: "Intro To Functional Programming",
+    link: "https://www.instagram.com/p/CfocKnWpuTq/",
+    date: "July 5, 2020",
+  },
+  {
+    title: "Normal Vs Arrow Function",
+    link: "https://www.instagram.com/p/CeqG4CnpK6q/",
+    date: "June 11, 2020",
+  },
+  {
+    title: "package-lock.json Explained",
+    link: "https://www.instagram.com/p/CchVk2fMppe/",
+    date: "April 19, 2020",
+  },
+];
 ---
 
 <section class="container">
   <h2>FEATURED BLOGS</h2>
 
   <div class="blogs">
-    {blogs.map(blog => (
-    <div class="blog">
-      <a href={blog['Link'].url} target="_black" rel="noreferrer">{blog['Title']}</a>
-      <p class="date">{blog['Date']}</p>
-    </div>
-    ))}
+    {
+      blogs.map((blog) => (
+        <div class="blog">
+          <a href={blog["link"]} target="_black" rel="noreferrer">
+            {blog["title"]}
+          </a>
+          <p class="date">{blog["date"]}</p>
+        </div>
+      ))
+    }
   </div>
 
   <OpenLink link="https://www.instagram.com/reactoverflow">View more</OpenLink>
@@ -38,11 +63,12 @@ const { blogs } = Astro.props;
     text-decoration: none;
     transition-duration: 0.3s;
     position: relative;
+    padding-bottom: 5px;
   }
 
   .blog a::after {
-    content: '';
-    border: 1px solid rgb(46, 46, 46);
+    content: "";
+    border: 1px solid rgb(250, 250, 250);
     bottom: 0;
     left: 0;
     right: 0;
@@ -60,5 +86,4 @@ const { blogs } = Astro.props;
   .blog .date {
     color: var(--text-color-2);
   }
-
 </style>
